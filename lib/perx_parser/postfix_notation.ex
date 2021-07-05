@@ -34,6 +34,10 @@ defmodule PerxParser.PostfixNotation do
 
   defp do_evaluate(segments, stack \\ [])
 
+  # If there are no segments and we haven't procured any results yet, then
+  # the expression is empty and we'll return zero
+  defp do_evaluate([""], []), do: 0
+
   # If there's no more segments (the first argument is an empty list) to
   # process then we can return the stack's head as the result as that's where
   # we're continuously pushing the accumulated value.

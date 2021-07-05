@@ -4,6 +4,14 @@ defmodule PerxParser.PostfixNotationTest do
   alias PerxParser.PostfixNotation
 
   describe "PerxParser.PostfixNotation.evaluate/1" do
+    test "returns zero for an empty expression" do
+      assert PostfixNotation.evaluate("") == 0
+    end
+
+    test "returns a lone segment as the expression's result" do
+      assert PostfixNotation.evaluate("1") == 1
+    end
+
     test "supports basic addition" do
       assert PostfixNotation.evaluate("5 50 +") == 55
     end
